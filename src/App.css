@@ -4,3 +4,51 @@
   padding: 2rem;
   text-align: center;
 }
+
+/** Hex Codes **/
+/* light-blue = #00BBF9
+   dark blue = #2A4494
+   red = #FF1B1C
+   green = #2CF6BB3
+   light-grey: #efe9f4
+*/
+
+body {
+  background-color: #efe9f4;
+}
+
+/** Start Screen styles **/
+.title {
+  color: #2A4494;
+  margin-bottom: 5px;
+}
+
+.description {
+  color: #2A4494;
+  margin-top: 5px;
+  margin-bottom: 50px;
+}
+
+.text-highlight {
+  color: #00BBF9
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1.2em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #2CF6B3;
+  color: #2A4494;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+button:hover {
+  border-color: #2A4494;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}

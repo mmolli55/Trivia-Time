@@ -8,8 +8,8 @@ function App() {
 
   return (
     <>
-      <h1>Trivia Time</h1>
-      <p>Need a break? Click below for a quick round of trivia.</p>
+      <h1 className="title">Trivia Time</h1>
+      <h2 className="description">Click below for a quick round of trivia.</h2>
       <div className="card">
         <button>
           Start Round
