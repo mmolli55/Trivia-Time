@@ -3,9 +3,14 @@ import './App.css'
 import StartScreen from './components/StartScreen.jsx'
 
 function App() {
+  const [showStartPage, setShowStartPage] = useState(true)
+
+  function startNewGame() {
+    setShowStartPage(false)
+  }
   return (
     <>
-      <StartScreen />
+      {showStartPage && <StartScreen startNewGame={startNewGame}/>}
     </>
   )
 }
