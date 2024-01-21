@@ -53,3 +53,20 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+/** Quiz Page Styles **/
+
+.answer-option {
+  font-size: 1em;
+  background-color: transparent;
+  border: 3px solid #2A4494;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.check-answers {
+  background-color: #2A4494;
+  color: #efe9f4;
+  margin-top: 20px;
+}
+
