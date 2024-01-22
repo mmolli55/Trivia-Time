@@ -1,11 +1,19 @@
+import Question from "./Question.jsx"
+
 function TriviaPage(props) {
     function test() {
-      console.log(answerOptions)
+      console.log(questions)
     }
 
     const triviaObject = props.triviaData
 
-    let answerOptions = []
+    const questions = triviaObject.map(item => item.question)
+
+
+
+
+
+    /*let answerOptions = []
 
     const correctAnswer = {
         value: `${triviaObject[0].correct_answer}`,
@@ -22,24 +30,27 @@ function TriviaPage(props) {
     for(let i = 0; i < answerOptions.length; i++) {
         let answerOption = answerOptions[i].value
         answerOptionsElements.push(
-          <>
-            <input 
-              type="radio" 
-              id={answerOption} 
-              key={i}
-              name="Q1-answer-option"
-            />
-            <label className="answer-option" htmlFor={answerOption}>{answerOption}</label>
-          </> 
+          <button className="answer-option" key={i}>{answerOption}</button>
         )
-    }
+    }*/
 
     return (
         <>
-          <p>{triviaObject[0].question}</p>
-          <div className="answer-container">
-            {answerOptionsElements}
-          </div>
+          <Question 
+            question={questions[0]}
+          />
+          <Question 
+            question={questions[1]}
+          />
+          <Question 
+            question={questions[2]}
+          />
+          <Question 
+            question={questions[3]}
+          />
+          <Question 
+            question={questions[4]}
+          />
           <button className="check-answers" onClick={test}>
                 Check Answers
           </button>

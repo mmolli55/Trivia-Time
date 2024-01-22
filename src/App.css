@@ -54,19 +54,14 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/** Quiz Page Styles **/
-
-input[type=radio] {
-  /*display: none;*/
-}
+/** Trivia Page Styles **/
 
 .answer-option {
   font-size: 1em;
-  border: 2px solid #2A4494;
-  border-radius: 20px;
-  padding: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
+  border: 3px solid #2A4494;
+  background-color: transparent;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .check-answers {

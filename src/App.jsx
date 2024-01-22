@@ -8,7 +8,7 @@ function App() {
   const [triviaData, setTriviaData] = useState([])
   
   useEffect(() => {
-    fetch("https://opentdb.com/api.php?amount=1&category=9&difficulty=medium&type=multiple")
+    fetch("https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple")
       .then(res => res.json())
       .then(data => setTriviaData(data.results))
   }, [])
