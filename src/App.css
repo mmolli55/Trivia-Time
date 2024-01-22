@@ -53,7 +53,7 @@ button:hover, button:focus {
   font-size: 1.4em;
   color: #2A4494;
   font-weight: 500;
-  max-width: 700px;
+  text-align: left;
 }
 .answer-option {
   border: 3px solid #2A4494;
@@ -67,6 +67,7 @@ button:hover, button:focus {
 
 .answer-container {
   margin-bottom: 1.5em;
+  text-align: left;
 }
 
 .check-answers {
@@ -74,5 +75,11 @@ button:hover, button:focus {
   background-color: #2A4494;
   color: #efe9f4;
   margin-top: 20px;
+}
+
+@media (max-width: 1060px) {
+  .answer-option {
+    display: block;
+  }
 }
 

@@ -1,14 +1,15 @@
 import Question from "./Question.jsx"
+import {decode} from 'html-entities'; //Decodes html entities the come from Open Trivia API
 
 function TriviaPage(props) {
     function test() {
-      console.log(answerOptions)
+      console.log(triviaObject)
     }
 
     const triviaObject = props.triviaData
     
     /* Generates array of all quiz questions */
-    const questions = triviaObject.map(item => item.question)
+    const questions = triviaObject.map(item => decode(item.question))
     
     /* Generates array of arrays, each nested array contains all possible answers 
     for an individual question */
@@ -16,27 +17,25 @@ function TriviaPage(props) {
       let possibleAnswers = []
 
       const correctAnswer = {
-        value: item.correct_answer,
-        isCorrect: true
+        value: decode(item.correct_answer),
+        isCorrect: true,
+        selected: false
       }
       possibleAnswers.push(correctAnswer)
 
       for(let i = 0; i < item.incorrect_answers.length; i++) {
         const incorrectAnswer = item.incorrect_answers[i]
-        possibleAnswers.push({value: incorrectAnswer, isCorrect: false})
+        possibleAnswers.push({value: decode(incorrectAnswer), isCorrect: false})
       }
       
       /* Randomize array in-place using Fisher-Yates (aka Knuth) Shuffle */
       function shuffle(array) {
         let currentIndex = array.length,  randomIndex;
-      
         // While there remain elements to shuffle.
         while (currentIndex > 0) {
-      
           // Pick a remaining element.
           randomIndex = Math.floor(Math.random() * currentIndex);
           currentIndex--;
-      
           // And swap it with the current element.
           [array[currentIndex], array[randomIndex]] = [
             array[randomIndex], array[currentIndex]];
