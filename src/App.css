@@ -30,15 +30,11 @@ body {
   margin-bottom: 50px;
 }
 
-.text-highlight {
-  color: #00BBF9
-}
-
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 3px solid #2A4494;
   padding: 0.6em 1.2em;
-  font-size: 1.2em;
+  font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   background-color: #2CF6B3;
@@ -46,25 +42,35 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #2A4494;
+button:hover, button:focus {
+  border: 3px solid #00BBF9;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+
 
 /** Trivia Page Styles **/
 
+.question-text {
+  font-size: 1.4em;
+  color: #2A4494;
+  font-weight: 500;
+  max-width: 700px;
+}
 .answer-option {
-  font-size: 1em;
   border: 3px solid #2A4494;
   background-color: transparent;
-  margin-left: 5px;
-  margin-right: 5px;
+  margin: 5px;
+}
+.answer-option:hover,
+.answer-option:focus {
+  border: 3px solid #00BBF9;
+}
+
+.answer-container {
+  margin-bottom: 1.5em;
 }
 
 .check-answers {
+  font-size: 1.2em;
   background-color: #2A4494;
   color: #efe9f4;
   margin-top: 20px;
