@@ -1,10 +1,15 @@
+import AnswerOption from "./AnswerOption"
+
 function Question(props) {
 
     let answerOptionsElements = []
-    for(let i = 0; i < props.answerOptions.length; i++) {
-        let answerOption = props.answerOptions[i].value
+    for(let i = 0; i < props.possibleAnswers.length; i++) {
         answerOptionsElements.push(
-          <button className="answer-option" key={i}>{answerOption}</button>
+          <AnswerOption 
+            value={props.possibleAnswers[i].value}
+            selected={props.possibleAnswers[i].selected}
+            key={i}
+          />
         )
     }
 
