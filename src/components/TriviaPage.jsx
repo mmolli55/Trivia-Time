@@ -3,29 +3,40 @@ function TriviaPage(props) {
       console.log(answerOptions)
     }
 
+    const triviaObject = props.triviaData
+
     let answerOptions = []
 
     const correctAnswer = {
-        value: `${props.triviaData[0].correct_answer}`,
+        value: `${triviaObject[0].correct_answer}`,
         isCorrect: true
     }
     answerOptions.push(correctAnswer)
 
     for(let i = 0; i < 3; i++) {
-      const incorrectAnswer = props.triviaData[0].incorrect_answers[i]
+      const incorrectAnswer = triviaObject[0].incorrect_answers[i]
       answerOptions.push({value: incorrectAnswer, isCorrect: false})
     }
 
-    let answerOptionsElements=[]
+    let answerOptionsElements = []
     for(let i = 0; i < answerOptions.length; i++) {
+        let answerOption = answerOptions[i].value
         answerOptionsElements.push(
-            <button key={i} className="answer-option">{answerOptions[i].value}</button>
+          <>
+            <input 
+              type="radio" 
+              id={answerOption} 
+              key={i}
+              name="Q1-answer-option"
+            />
+            <label className="answer-option" htmlFor={answerOption}>{answerOption}</label>
+          </> 
         )
     }
 
     return (
         <>
-          <p>{props.triviaData[0].question}</p>
+          <p>{triviaObject[0].question}</p>
           <div className="answer-container">
             {answerOptionsElements}
           </div>

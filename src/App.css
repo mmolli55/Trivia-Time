@@ -56,10 +56,15 @@ button:focus-visible {
 
 /** Quiz Page Styles **/
 
+input[type=radio] {
+  /*display: none;*/
+}
+
 .answer-option {
   font-size: 1em;
-  background-color: transparent;
-  border: 3px solid #2A4494;
+  border: 2px solid #2A4494;
+  border-radius: 20px;
+  padding: 10px;
   margin-left: 10px;
   margin-right: 10px;
 }
