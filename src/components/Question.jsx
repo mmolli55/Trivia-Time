@@ -9,6 +9,8 @@ function Question(props) {
             value={props.possibleAnswers[i].value}
             selected={props.possibleAnswers[i].selected}
             key={i}
+            selectAnswer={props.selectAnswer}
+            forQuestionNum={props.questionNum}
           />
         )
     }

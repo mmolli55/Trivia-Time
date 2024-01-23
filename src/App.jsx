@@ -9,7 +9,7 @@ function App() {
   const [triviaData, setTriviaData] = useState([])
   const [allQuestions, setAllQuestions] = useState([])
   const [allPossibleAnswers, setAllPossibleAnswers] = useState([])
-  
+
   useEffect(() => {
     fetch("https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple")
       .then(res => res.json())
@@ -25,12 +25,14 @@ function App() {
     /* Generates array of arrays, each nested array contains all possible answers 
     for an individual question */
     const answerOptions = triviaData.map(item => {
+      let associatedQuestion = triviaData.indexOf(item) + 1
       let possibleAnswers = []
 
       const correctAnswer = {
         value: decode(item.correct_answer),
         isCorrect: true,
-        selected: true
+        selected: false,
+        associatedQuestion: associatedQuestion
       }
       possibleAnswers.push(correctAnswer)
 
@@ -40,6 +42,7 @@ function App() {
           value: decode(incorrectAnswer), 
           isCorrect: false,
           selected: false,
+          associatedQuestion: associatedQuestion
         })
       }
       
@@ -71,6 +74,32 @@ function App() {
     setShowStartPage(false)
   }
 
+  function selectAnswer(value, num) {
+    setAllPossibleAnswers(prevValue => {
+      let newArrayOfArrays = prevValue.map(answerArray => {
+        let nestedArray = answerArray.map(answer => {
+          // I think if statement is needed here to fix bug of only one selection allowed on entire quiz
+          // Create state for each question?
+          // if answer.id != id, return {...answer}?
+          
+          if(answer.associatedQuestion === num  && answer.value === value) {
+              return {...answer, selected: true}
+          } else if (answer.associatedQuestion === num  && answer.value != value){
+              return {...answer, selected: false}
+          } else {
+              return {...answer}
+          }
+          
+          
+
+        })
+        return nestedArray
+      })
+      return newArrayOfArrays
+    })
+
+  }
+
   return (
     <>
       {showStartPage && <StartScreen startNewGame={startNewGame}/>}
@@ -78,6 +107,7 @@ function App() {
         <TriviaPage 
           allQuestions={allQuestions}
           allPossibleAnswers={allPossibleAnswers}
+          selectAnswer={selectAnswer}
         />
       }
     </>
