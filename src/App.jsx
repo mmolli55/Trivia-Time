@@ -63,7 +63,6 @@ function App() {
       }
 
       const shuffledAnswers = shuffle(possibleAnswers)
-
       return shuffledAnswers
     })
 
@@ -74,23 +73,18 @@ function App() {
     setShowStartPage(false)
   }
 
-  function selectAnswer(value, num) {
+  function selectAnswer(value, forQuesNum) {
     setAllPossibleAnswers(prevValue => {
       let newArrayOfArrays = prevValue.map(answerArray => {
         let nestedArray = answerArray.map(answer => {
-          // I think if statement is needed here to fix bug of only one selection allowed on entire quiz
-          // Create state for each question?
-          // if answer.id != id, return {...answer}?
           
-          if(answer.associatedQuestion === num  && answer.value === value) {
+          if(answer.associatedQuestion === forQuesNum  && answer.value === value) {
               return {...answer, selected: true}
-          } else if (answer.associatedQuestion === num  && answer.value != value){
+          } else if (answer.associatedQuestion === forQuesNum  && answer.value != value){
               return {...answer, selected: false}
           } else {
               return {...answer}
           }
-          
-          
 
         })
         return nestedArray

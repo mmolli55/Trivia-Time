@@ -1,43 +1,25 @@
 import Question from "./Question.jsx"
-import { useState, useEffect } from 'react'
 
 function TriviaPage(props) {
     function test() {
       console.log(props.allPossibleAnswers)
     }
     // Create for loops to generate Quesntion components?
+    const questionComponents = []
+    for(let i = 0; i < props.allQuestions.length; i++) {
+      questionComponents.push(
+        <Question 
+          question={props.allQuestions[i]}
+          possibleAnswers={props.allPossibleAnswers[i]}
+          selectAnswer={props.selectAnswer}
+          questionNum={i + 1}
+        />
+      )
+    }
+
     return (
         <>
-          <Question 
-            question={props.allQuestions[0]}
-            possibleAnswers={props.allPossibleAnswers[0]}
-            selectAnswer={props.selectAnswer}
-            questionNum={1}
-          />
-          <Question 
-            question={props.allQuestions[1]}
-            possibleAnswers={props.allPossibleAnswers[1]}
-            selectAnswer={props.selectAnswer}
-            questionNum={2}
-          />
-          <Question 
-            question={props.allQuestions[2]}
-            possibleAnswers={props.allPossibleAnswers[2]}
-            selectAnswer={props.selectAnswer}
-            questionNum={3}
-          />
-          <Question 
-            question={props.allQuestions[3]}
-            possibleAnswers={props.allPossibleAnswers[3]}
-            selectAnswer={props.selectAnswer}
-            questionNum={4}
-          />
-          <Question 
-            question={props.allQuestions[4]}
-            possibleAnswers={props.allPossibleAnswers[4]}
-            selectAnswer={props.selectAnswer}
-            questionNum={5}
-          />
+          {questionComponents}
           <button className="check-answers" onClick={test}>
                 Check Answers
           </button>
