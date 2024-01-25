@@ -98,7 +98,17 @@ function App() {
 
   function checkAnswers() {
     setRoundFinished(true)
-    console.log(roundFinished)
+  }
+
+  function calculateScore() {
+    let score = 0
+    allPossibleAnswers.map(nestedArray => nestedArray.map(answer => {
+        if(answer.selected && answer.isCorrect) {
+          score += 1
+        }
+      }
+    ))
+    return score
   }
 
   return (
@@ -111,6 +121,7 @@ function App() {
           selectAnswer={selectAnswer}
           checkAnswers={checkAnswers}
           roundFinished={roundFinished}
+          calculateScore={calculateScore}
         />
       }
     </>

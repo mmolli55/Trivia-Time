@@ -1,5 +1,4 @@
 import Question from "./Question.jsx"
-
 function TriviaPage(props) {
     const questionComponents = []
     for(let i = 0; i < props.allQuestions.length; i++) {
@@ -15,9 +14,13 @@ function TriviaPage(props) {
       )
     }
 
+    let playerScore = props.calculateScore()
+    
+    console.log(props.allPossibleAnswers)
     return (
         <>
           {questionComponents}
+          {props.roundFinished === true && <p>You answered {playerScore} / 5 questions correctly. {playerScore === 5 && "Congrats!"}</p>}
           <button className="check-answers" onClick={props.checkAnswers}>
                 Check Answers
           </button>
