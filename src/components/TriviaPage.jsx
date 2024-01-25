@@ -1,10 +1,6 @@
 import Question from "./Question.jsx"
 
 function TriviaPage(props) {
-    function test() {
-      console.log(props.allPossibleAnswers)
-    }
-    // Create for loops to generate Quesntion components?
     const questionComponents = []
     for(let i = 0; i < props.allQuestions.length; i++) {
       questionComponents.push(
@@ -13,6 +9,8 @@ function TriviaPage(props) {
           possibleAnswers={props.allPossibleAnswers[i]}
           selectAnswer={props.selectAnswer}
           questionNum={i + 1}
+          roundFinished={props.roundFinished}
+          key={i}
         />
       )
     }
@@ -20,7 +18,7 @@ function TriviaPage(props) {
     return (
         <>
           {questionComponents}
-          <button className="check-answers" onClick={test}>
+          <button className="check-answers" onClick={props.checkAnswers}>
                 Check Answers
           </button>
         </>

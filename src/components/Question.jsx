@@ -8,9 +8,11 @@ function Question(props) {
           <AnswerOption 
             value={props.possibleAnswers[i].value}
             selected={props.possibleAnswers[i].selected}
+            isCorrect={props.possibleAnswers[i].isCorrect}
             key={i}
             selectAnswer={props.selectAnswer}
             forQuestionNum={props.questionNum}
+            roundFinished={props.roundFinished}
           />
         )
     }

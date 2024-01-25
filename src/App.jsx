@@ -9,6 +9,7 @@ function App() {
   const [triviaData, setTriviaData] = useState([])
   const [allQuestions, setAllQuestions] = useState([])
   const [allPossibleAnswers, setAllPossibleAnswers] = useState([])
+  const [roundFinished, setRoundFinished] = useState(false)
 
   useEffect(() => {
     fetch("https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple")
@@ -74,24 +75,30 @@ function App() {
   }
 
   function selectAnswer(value, forQuesNum) {
-    setAllPossibleAnswers(prevValue => {
-      let newArrayOfArrays = prevValue.map(answerArray => {
-        let nestedArray = answerArray.map(answer => {
-          
-          if(answer.associatedQuestion === forQuesNum  && answer.value === value) {
-              return {...answer, selected: true}
-          } else if (answer.associatedQuestion === forQuesNum  && answer.value != value){
-              return {...answer, selected: false}
-          } else {
-              return {...answer}
-          }
+    if(roundFinished === false) {
+      setAllPossibleAnswers(prevValue => {
+        let newArrayOfArrays = prevValue.map(answerArray => {
+          let nestedArray = answerArray.map(answer => {
+            
+            if(answer.associatedQuestion === forQuesNum  && answer.value === value) {
+                return {...answer, selected: true}
+            } else if (answer.associatedQuestion === forQuesNum  && answer.value != value){
+                return {...answer, selected: false}
+            } else {
+                return {...answer}
+            }
 
+          })
+          return nestedArray
         })
-        return nestedArray
+        return newArrayOfArrays
       })
-      return newArrayOfArrays
-    })
+    }
+  }
 
+  function checkAnswers() {
+    setRoundFinished(true)
+    console.log(roundFinished)
   }
 
   return (
@@ -102,6 +109,8 @@ function App() {
           allQuestions={allQuestions}
           allPossibleAnswers={allPossibleAnswers}
           selectAnswer={selectAnswer}
+          checkAnswers={checkAnswers}
+          roundFinished={roundFinished}
         />
       }
     </>
