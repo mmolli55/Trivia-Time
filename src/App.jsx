@@ -70,7 +70,7 @@ function App() {
     setAllPossibleAnswers(answerOptions)
   }, [triviaData])
 
-  function startNewGame() {
+  function startRound() {
     setShowStartPage(false)
   }
 
@@ -113,7 +113,7 @@ function App() {
 
   return (
     <>
-      {showStartPage && <StartScreen startNewGame={startNewGame}/>}
+      {showStartPage && <StartScreen startRound={startRound}/>}
       {!showStartPage && 
         <TriviaPage 
           allQuestions={allQuestions}

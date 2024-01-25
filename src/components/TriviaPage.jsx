@@ -16,13 +16,15 @@ function TriviaPage(props) {
 
     let playerScore = props.calculateScore()
     
-    console.log(props.allPossibleAnswers)
     return (
         <>
           {questionComponents}
-          {props.roundFinished === true && <p>You answered {playerScore} / 5 questions correctly. {playerScore === 5 && "Congrats!"}</p>}
+          {props.roundFinished === true && 
+            <p className="results">You answered {playerScore} / 5 questions correctly. {playerScore === 5 && "Congrats!"}</p>
+          }
+
           <button className="check-answers" onClick={props.checkAnswers}>
-                Check Answers
+                {props.roundFinished ? "Play again" : "Check Answers"}
           </button>
         </>
     )

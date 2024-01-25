@@ -77,6 +77,14 @@ button:hover, button:focus {
   margin-top: 20px;
 }
 
+p.results {
+  font-size: 1.6em;
+  color: #2A4494;
+  font-weight: 500;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
 @media (max-width: 1060px) {
   .answer-option {
     display: block;
