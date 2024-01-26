@@ -18,6 +18,8 @@ function TriviaPage(props) {
 
     return (
         <>
+          <h1 className="title-trivia-page" onClick={props.backToStartPage}>🤔 Trivia Time 🤔</h1>
+          <hr />
           {questionComponents}
           {props.isAnswering === false && 
             <p className="results">You answered {playerScore} / 5 questions correctly. {playerScore === 5 && "Congrats!"}</p>

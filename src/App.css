@@ -1,10 +1,3 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
 /** Hex Codes **/
 /* light-blue = #00BBF9
    dark blue = #2A4494
@@ -14,14 +7,39 @@
    light-grey: #efe9f4
 */
 
-body {
+#root {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: rgb(239, 233, 244);
+  border-radius: 10px;
+  border: 3px solid #2A4494;
+}
+
+#image-attribution {
   background-color: #efe9f4;
+  border-radius: 5px;
+  padding: 5px;
+  width: 200px;
+  text-align: center;
+  font-size: .8em;
 }
 
 /** Start Screen styles **/
-.title {
+.title, .title-trivia-page  {
   color: #2A4494;
   margin-bottom: 5px;
+}
+
+.title-trivia-page {
+  margin-top: 5px;
+  margin-bottom: 30px;
+  cursor: pointer;
+}
+
+.title-trivia-page:hover {
+  color: #00BBF9;
 }
 
 .description {

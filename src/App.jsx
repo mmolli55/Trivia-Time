@@ -75,6 +75,10 @@ function App() {
     setShowStartPage(false)
   }
 
+  function backToStartPage() {
+    setShowStartPage(true)
+  }
+
   function selectAnswer(value, forQuesNum) {
     if(isAnswering) {
       setAllPossibleAnswers(prevValue => {
@@ -128,7 +132,7 @@ function App() {
           checkAnswers={checkAnswers}
           isAnswering={isAnswering}
           calculateScore={calculateScore}
-
+          backToStartPage={backToStartPage}
         />
       }
     </>
