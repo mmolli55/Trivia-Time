@@ -8,23 +8,23 @@ function TriviaPage(props) {
           possibleAnswers={props.allPossibleAnswers[i]}
           selectAnswer={props.selectAnswer}
           questionNum={i + 1}
-          roundFinished={props.roundFinished}
+          isAnswering={props.isAnswering}
           key={i}
         />
       )
     }
 
     let playerScore = props.calculateScore()
-    
+
     return (
         <>
           {questionComponents}
-          {props.roundFinished === true && 
+          {props.isAnswering === false && 
             <p className="results">You answered {playerScore} / 5 questions correctly. {playerScore === 5 && "Congrats!"}</p>
           }
 
           <button className="check-answers" onClick={props.checkAnswers}>
-                {props.roundFinished ? "Play again" : "Check Answers"}
+                {props.isAnswering ? "Check Answers" : "Play again"}
           </button>
         </>
     )

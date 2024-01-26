@@ -16,9 +16,9 @@ function AnswerOption(props) {
         border: props.isCorrect === false && props.selected === true ? "3px solid #FF1B1C" : "3px solid #2A4494"
     }
 
-    if(props.roundFinished === false) {
+    if(props.isAnswering) {
         styles = playingStyles
-    } else if (props.roundFinished) {
+    } else if (props.isAnswering === false) {
         if(props.isCorrect) {
             styles = finishedCorrectAnswerStyles
         } else {

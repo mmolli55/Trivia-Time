@@ -9,7 +9,8 @@ function App() {
   const [triviaData, setTriviaData] = useState([])
   const [allQuestions, setAllQuestions] = useState([])
   const [allPossibleAnswers, setAllPossibleAnswers] = useState([])
-  const [roundFinished, setRoundFinished] = useState(false)
+  const [isAnswering, setisAnswering] = useState(true)
+  const [roundsPlayed, setRoundsPlayed] = useState(0)
 
   useEffect(() => {
     fetch("https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple")
@@ -75,7 +76,7 @@ function App() {
   }
 
   function selectAnswer(value, forQuesNum) {
-    if(roundFinished === false) {
+    if(isAnswering) {
       setAllPossibleAnswers(prevValue => {
         let newArrayOfArrays = prevValue.map(answerArray => {
           let nestedArray = answerArray.map(answer => {
@@ -97,7 +98,7 @@ function App() {
   }
 
   function checkAnswers() {
-    setRoundFinished(true)
+    setisAnswering(false)
   }
 
   function calculateScore() {
@@ -120,8 +121,9 @@ function App() {
           allPossibleAnswers={allPossibleAnswers}
           selectAnswer={selectAnswer}
           checkAnswers={checkAnswers}
-          roundFinished={roundFinished}
+          isAnswering={isAnswering}
           calculateScore={calculateScore}
+
         />
       }
     </>

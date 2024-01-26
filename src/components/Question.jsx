@@ -12,7 +12,7 @@ function Question(props) {
             key={i}
             selectAnswer={props.selectAnswer}
             forQuestionNum={props.questionNum}
-            roundFinished={props.roundFinished}
+            isAnswering={props.isAnswering}
           />
         )
     }
