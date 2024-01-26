@@ -9,14 +9,14 @@ function App() {
   const [triviaData, setTriviaData] = useState([])
   const [allQuestions, setAllQuestions] = useState([])
   const [allPossibleAnswers, setAllPossibleAnswers] = useState([])
-  const [isAnswering, setisAnswering] = useState(true)
+  const [isAnswering, setIsAnswering] = useState(true)
   const [roundsPlayed, setRoundsPlayed] = useState(0)
 
   useEffect(() => {
-    fetch("https://opentdb.com/api.php?amount=5&category=9&difficulty=medium&type=multiple")
+    fetch("https://opentdb.com/api.php?amount=5&type=multiple")
       .then(res => res.json())
       .then(data => setTriviaData(data.results))
-  }, [])
+  }, [roundsPlayed])
 
   useEffect(() => {
     /* Generates array of all quiz questions */
@@ -98,7 +98,12 @@ function App() {
   }
 
   function checkAnswers() {
-    setisAnswering(false)
+    if(isAnswering) {
+      setIsAnswering(false)
+    } else {
+      setIsAnswering(true)
+      setRoundsPlayed(prevValue => prevValue + 1)
+    }    
   }
 
   function calculateScore() {
